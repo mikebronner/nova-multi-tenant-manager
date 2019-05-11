@@ -12,8 +12,6 @@ class Tenant extends Model
 
     protected $appends = [
         "aliases",
-        "logo",
-        "watermark",
     ];
     protected $casts = [
         "settings" => "array",

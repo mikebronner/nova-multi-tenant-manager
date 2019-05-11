@@ -4,7 +4,6 @@ export default {
         return {
             fields: [],
             imagePreviewData: "",
-            watermarkPreviewData: "",
             newAlias: "",
             tenant: {},
             validationErrors: [],
@@ -20,20 +19,12 @@ export default {
             return (((this.tenant.settings || {}).logo || "").length > 0);
         },
 
-        hasWatermark: function () {
-            return (((this.tenant.settings || {}).watermark || "").length > 0);
-        },
-
         currentImage: function () {
             return (this.imagePreviewData.length > 0
                 ? this.imagePreviewData
-                : "/" + this.tenant.logo);
-        },
-
-        currentWatermark: function () {
-            return (this.watermarkPreviewData.length > 0
-                ? this.watermarkPreviewData
-                : "/" + this.tenant.watermark);
+                : (this.hasLogo
+                    ? "/" + this.tenant.settings.logo
+                    : ""));
         },
     },
 
@@ -80,12 +71,8 @@ export default {
                 data.append("name", this.tenant.name);
             }
 
-            if (this.tenant.logo != null) {
-                data.append("logo", this.tenant.logo);
-            }
-
-            if (this.tenant.watermark != null) {
-                data.append("watermark", this.tenant.watermark);
+            if (this.tenant.settings.logo != null) {
+                data.append("logo", this.tenant.settings.logo);
             }
 
             return data;
@@ -98,7 +85,7 @@ export default {
         loadTenant: function () {
             var self = this;
 
-            axios.get("/nova-vendor/genealabs-nova-multi-tenant-manager/settings")
+            axios.get("/nova-vendor/genealabs-nova-multi-tenant-manager/tenants/0")
                 .then(function (response) {
                     self.tenant = response.data;
                     self.fields = [
@@ -148,32 +135,6 @@ export default {
             }
         },
 
-        previewWatermark: function (event) {
-            var input = event.target;
-            var self = this;
-
-            if (input.files
-                && input.files[0]
-            ) {
-                var reader = new FileReader();
-
-                this.tenant.settings = Object.assign({}, this.tenant.settings, {
-                    watermark: input.files[0],
-                });
-                reader.onload = function (event) {
-                    var imageData = event.target.result;
-                    self.watermarkPreviewData = "";
-
-                    if (imageData.indexOf("data:image") === 0) {
-                        self.watermarkPreviewData = imageData;
-                    }
-                }
-                reader.readAsDataURL(input.files[0]);
-
-                this.updateTenant();
-            }
-        },
-
         updateTenant: _.debounce(function () {
             var self = this;
             var data = this.formData();
@@ -200,8 +161,7 @@ export default {
 
 <template>
     <div>
-        <heading class="mb-6">Site Settings</heading>
-
+        <heading class="mb-6">Site</heading>
         <card>
             <div>
                 <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
@@ -222,79 +182,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="flex border-b border-40">
-                    <div class="w-1/5 py-6 px-8">
-                        <label class="inline-block text-80 pt-2 leading-tight">
-                            Logo
-                        </label>
-                    </div>
-                    <div class="py-6 px-8 w-4/5">
-                        <span class="form-file mr-4">
-                            <input
-                                type="file"
-                                id="logo"
-                                class="form-file-input"
-                                @change="previewImage"
-                                accept="image"
-                                ref="logo"
-                            >
-                            <label v-if="hasLogo">
-                                <img class="image-preview"
-                                    :src="currentImage"
-                                >
-                            </label>
-                            <div></div>
-                            <label
-                                for="logo"
-                                class="mt-4 form-file-btn btn btn-default btn-primary"
-                            >
-                                Choose File
-                            </label>
-                        </span>
-                        <div class="help-text help-text mt-2">
-                            Current File: {{ tenant.logo || "no file selected" }}
-                        </div>
-                    </div>
-                </div>
-                <div class="flex border-b border-40">
-                    <div class="w-1/5 py-6 px-8">
-                        <label class="inline-block text-80 pt-2 leading-tight">
-                            Watermark
-                        </label>
-                    </div>
-                    <div class="py-6 px-8 w-4/5">
-                        <span class="form-file mr-4">
-                            <input
-                                type="file"
-                                id="watermark"
-                                class="form-file-input"
-                                @change="previewWatermark"
-                                accept="image"
-                                ref="watermark"
-                            >
-                            <label v-if="hasWatermark">
-                                <img class="image-preview"
-                                    :src="currentWatermark"
-                                >
-                            </label>
-                            <div></div>
-                            <label
-                                for="watermark"
-                                class="mt-4 form-file-btn btn btn-default btn-primary"
-                            >
-                                Choose File
-                            </label>
-                        </span>
-                        <div class="help-text help-text mt-2">
-                            Current File: {{ tenant.watermark || "no file selected" }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </card>
-        <card class="mt-4">
-            <div>
-                <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
+                                <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
                     <div class="w-1/5 py-6 px-8">
                         <label class="inline-block text-80 pt-2 leading-tight" for="name">
                             Domain
@@ -339,6 +227,47 @@ export default {
                         </button>
 
                         <div class="help-text help-text mt-2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </card>
+
+        <heading class="mb-6 mt-12">Settings</heading>
+        <card class="mt-4">
+            <div>
+                <div class="flex border-b border-40">
+                    <div class="w-1/5 py-6 px-8">
+                        <label class="inline-block text-80 pt-2 leading-tight">
+                            Logo
+                        </label>
+                    </div>
+                    <div class="py-6 px-8 w-4/5">
+                        <span class="form-file mr-4">
+                            <input
+                                type="file"
+                                id="logo"
+                                class="form-file-input"
+                                @change="previewImage"
+                                accept="image"
+                                ref="logo"
+                            >
+                            <label>
+                                <img class="image-preview"
+                                    :src="currentImage"
+                                >
+                            </label>
+                            <div></div>
+                            <label
+                                for="logo"
+                                class="mt-4 form-file-btn btn btn-default btn-primary"
+                            >
+                                Choose File
+                            </label>
+                        </span>
+                        <div class="help-text help-text mt-2">
+                            Current File: {{ tenant.logo || "no file selected" }}
                         </div>
                     </div>
                 </div>
