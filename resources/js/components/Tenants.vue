@@ -18,7 +18,7 @@ export default {
         createTenant: function () {
             var self = this;
 
-            axios.post("/nova-vendor/tenants", {
+            axios.post("/nova-vendor/genealabs-nova-multi-tenant-manager/tenants", {
                     adminEmail: this.adminEmail,
                     adminName: this.adminName,
                     domain: this.domain,
@@ -38,7 +38,7 @@ export default {
         deleteTenant: function (id) {
             var self = this;
 
-            axios.delete("/nova-vendor/tenants/" + id)
+            axios.delete("/nova-vendor/genealabs-nova-multi-tenant-manager/tenants/" + id)
                 .then(function (response) {
                     self.$toasted.show("Tenant successfully deleted.", {type: "success"});
 
@@ -58,7 +58,7 @@ export default {
         getTenants: function () {
             var self = this;
 
-            axios.get("/nova-vendor/tenants")
+            axios.get("/nova-vendor/genealabs-nova-multi-tenant-manager/tenants")
                 .then(function (response) {
                     self.tenants = Object.assign([], response.data);
                 })

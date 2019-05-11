@@ -1,10 +1,10 @@
-<?php namespace Genealabs\MultiTenantManager;
+<?php namespace GeneaLabs\NovaMultiTenantManager;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Events\ServingNova;
+use GeneaLabs\NovaMultiTenantManager\Http\Middleware\Authorize;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Genealabs\Tenants\Http\Middleware\Authorize;
+use Laravel\Nova\Events\ServingNova;
+use Laravel\Nova\Nova;
 
 class ToolServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class ToolServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tenants');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'genealabs-nova-multi-tenant-manager');
 
         $this->app->booted(function () {
             $this->routes();
@@ -38,7 +38,7 @@ class ToolServiceProvider extends ServiceProvider
         }
 
         Route::middleware(['nova', Authorize::class])
-                ->prefix('nova-vendor/genealabs-multi-tenant-manager')
+                ->prefix('nova-vendor/genealabs-nova-multi-tenant-manager')
                 ->group(__DIR__.'/../routes/api.php');
     }
 

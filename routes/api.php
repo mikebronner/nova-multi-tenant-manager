@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", "Genealabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@index");
-Route::post("/", "Genealabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@store");
-Route::delete("/{id}", "Genealabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@delete");
+// Route::get("/", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@index");
+// Route::post("/", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@store");
+// Route::delete("/{id}", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController@delete");
 
-Route::resource("tenants", "Genealabs\NovaMultiTenantManager\Http\Controllers\Api\SettingController");
-Route::resource("aliases", "Genealabs\NovaMultiTenantManager\Http\Controllers\Api\AliasController");
+Route::resource("tenants", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\TenantController");
+Route::resource("settings", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\SettingController");
+Route::resource("aliases", "GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api\AliasController");

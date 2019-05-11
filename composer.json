@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Genealabs\\NovaMultiTenantManager\\": "src/"
+            "GeneaLabs\\NovaMultiTenantManager\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Genealabs\\NovaMultiTenantManager\\ToolServiceProvider"
+                "GeneaLabs\\NovaMultiTenantManager\\ToolServiceProvider"
             ]
         }
     },

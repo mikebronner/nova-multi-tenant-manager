@@ -6,8 +6,8 @@ Nova.booting((Vue, router, store) => {
             component: require('./components/Tenants'),
         },
         {
-            name: 'site-settings',
-            path: '/site-settings',
+            name: 'tenant-settings',
+            path: '/tenant-settings',
             component: require('./components/Settings'),
         },
     ])

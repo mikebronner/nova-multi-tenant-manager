@@ -1,12 +1,13 @@
-<?php namespace Genealabs\MultiTenantManager\Http\Controllers\Api;
+<?php namespace GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api;
 
-use App\Services\Tenant as TenantService;
-use App\Tenant;
+//TODO: extract user class out to configuration
 use App\User;
+use GeneaLabs\NovaMultiTenantManager\Services\Tenant as TenantService;
+use GeneaLabs\NovaMultiTenantManager\Tenant;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
-use Illuminate\Http\Request;
 
 class TenantController extends Controller
 {
@@ -20,6 +21,7 @@ class TenantController extends Controller
 
     public function store(Request $request) : Tenant
     {
+        //TODO: extract permission management out to configuration classes to be implemented by user
         $superAdmins = (new User)
             ->with("roles")
             ->whereHas("roles", function ($query) {

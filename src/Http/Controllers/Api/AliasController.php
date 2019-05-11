@@ -1,12 +1,12 @@
-<?php namespace Genealabs\MultiTenantManager\Http\Controllers;
+<?php namespace GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api;
 
-use App\Tenant;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use App\Services\Tenant as TenantService;
+use GeneaLabs\NovaMultiTenantManager\Services\Tenant as TenantService;
+use GeneaLabs\NovaMultiTenantManager\Tenant;
 use Hyn\Tenancy\Environment;
-use Illuminate\Http\Response;
 use Hyn\Tenancy\Models\Hostname;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 
 class AliasController extends Controller
 {

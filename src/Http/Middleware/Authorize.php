@@ -1,7 +1,7 @@
-<?php namespace Genealabs\MultiTenantManager\Http\Middleware;
+<?php namespace GeneaLabs\NovaMultiTenantManager\Http\Middleware;
 
+use GeneaLabs\NovaMultiTenantManager\NovaMultiTenantManager;
 use Laravel\Nova\Nova;
-use Genealabs\Tenants\Tenants;
 
 class Authorize
 {
@@ -27,6 +27,6 @@ class Authorize
      */
     public function matchesTool($tool)
     {
-        return $tool instanceof Tenants;
+        return $tool instanceof NovaMultiTenantManager;
     }
 }

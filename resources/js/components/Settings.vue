@@ -41,7 +41,7 @@ export default {
         addAlias: function () {
             var self = this;
 
-            axios.post("/nova-vendor/site-settings/aliases", {
+            axios.post("/nova-vendor/genealabs-nova-multi-tenant-manager/aliases", {
                     alias: self.newAlias,
                 })
                 .then(function (response) {
@@ -57,7 +57,7 @@ export default {
         deleteAlias: function (aliasId) {
             var self = this;
 
-            axios.delete("/nova-vendor/site-settings/aliases/" + aliasId)
+            axios.delete("/nova-vendor/genealabs-nova-multi-tenant-manager/aliases/" + aliasId)
                 .then(function (response) {
                     if (response.status >= 200 && response.status < 300) {
                         self.tenant.aliases = _.reject(self.tenant.aliases, function (alias) {
@@ -98,7 +98,7 @@ export default {
         loadTenant: function () {
             var self = this;
 
-            axios.get("/nova-vendor/site-settings/tenants")
+            axios.get("/nova-vendor/genealabs-nova-multi-tenant-manager/settings")
                 .then(function (response) {
                     self.tenant = response.data;
                     self.fields = [
@@ -179,7 +179,7 @@ export default {
             var data = this.formData();
 
             axios.post(
-                    "/nova-vendor/site-settings/tenants/" + this.tenant.id,
+                    "/nova-vendor/genealabs-nova-multi-tenant-manager/tenants/" + this.tenant.id,
                     data
                 )
                 .then(function (response) {

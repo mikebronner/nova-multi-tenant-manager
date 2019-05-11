@@ -1,9 +1,9 @@
-<?php namespace Genealabs\MultiTenantManager;
+<?php namespace GeneaLabs\NovaMultiTenantManager;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
-class Tenants extends Tool
+class NovaMultiTenantManager extends Tool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
@@ -12,8 +12,8 @@ class Tenants extends Tool
      */
     public function boot()
     {
-        Nova::script('tenants', __DIR__.'/../dist/js/tool.js');
-        Nova::style('tenants', __DIR__.'/../dist/css/tool.css');
+        Nova::script('genealabs-nova-multi-tenant-manager', __DIR__.'/../dist/js/tool.js');
+        Nova::style('genealabs-nova-multi-tenant-manager', __DIR__.'/../dist/css/tool.css');
     }
 
     /**
@@ -23,6 +23,6 @@ class Tenants extends Tool
      */
     public function renderNavigation()
     {
-        return view('tenants::navigation');
+        return view('genealabs-nova-multi-tenant-manager::navigation');
     }
 }

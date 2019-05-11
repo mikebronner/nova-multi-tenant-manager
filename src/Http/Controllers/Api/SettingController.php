@@ -1,10 +1,10 @@
-<?php namespace Genealabs\MultiTenantManager\Http\Controllers;
+<?php namespace GeneaLabs\NovaMultiTenantManager\Http\Controllers\Api;
 
-use App\Tenant;
+use GeneaLabs\NovaMultiTenantManager\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class TenantController extends Controller
+class SettingController extends Controller
 {
     public function index() : Tenant
     {
