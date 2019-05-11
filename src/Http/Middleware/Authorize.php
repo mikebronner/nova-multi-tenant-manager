@@ -1,6 +1,4 @@
-<?php
-
-namespace Genealabs\Tenants\Http\Middleware;
+<?php namespace Genealabs\MultiTenantManager\Http\Middleware;
 
 use Laravel\Nova\Nova;
 use Genealabs\Tenants\Tenants;

@@ -1,4 +1,4 @@
-<?php namespace Genealabs\Tenants;
+<?php namespace Genealabs\MultiTenantManager;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;

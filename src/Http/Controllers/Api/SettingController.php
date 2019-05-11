@@ -1,4 +1,4 @@
-<?php namespace Genealabs\SiteSettings\Http\Controllers;
+<?php namespace Genealabs\MultiTenantManager\Http\Controllers;
 
 use App\Tenant;
 use Illuminate\Http\Request;

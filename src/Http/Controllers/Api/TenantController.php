@@ -1,4 +1,4 @@
-<?php namespace Genealabs\Tenants\Http\Controllers\Api;
+<?php namespace Genealabs\MultiTenantManager\Http\Controllers\Api;
 
 use App\Services\Tenant as TenantService;
 use App\Tenant;
