@@ -1,6 +1,12 @@
 # Nova Multi-Tenant Manager
 Manage tenants and their settings in Laravel Nova.
 
+## Requirements
+- PHP >= 7.1.3
+- Laravel 5.8.* (https://laravel.com)
+- Laravel Nova 2.* (https://nova.laravel.com)
+- Laravel Tenancy 5.4.* (https://laravel-tenancy.com)
+
 ## Installation
 1. ```sh
    composer require "genealabs/nova-multi-tenant-manager:*"
@@ -18,4 +24,13 @@ Manage tenants and their settings in Laravel Nova.
    ```
 
 ### Planned Features
-- configurable settings fields
+- Configurable settings fields.
+- Automatic integration with `genealabs/laravel-governor`.
+- Extendible classes to allow custom integrate with 3rd-party packages.
+
+## Usage
+### CLI Commands
+// TBA
+
+### Nova Tools
+// TBA
