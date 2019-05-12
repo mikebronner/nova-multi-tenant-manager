@@ -28,6 +28,7 @@ Manage tenants and their settings in Laravel Nova.
 - Automatic integration with `genealabs/laravel-governor`.
 - Extendible classes to allow custom integration with 3rd-party packages.
 - Integrate CLI commands into tenancy namespace.
+- Add unit tests.
 
 ## Usage
 ### CLI Commands
