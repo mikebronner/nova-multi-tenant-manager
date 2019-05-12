@@ -46,8 +46,8 @@ php artisan tenant:alias <domain> <alias>
 #### `tenant:delete`
 Deletes tenant by the provided domain, or delete all tenants.
 ```sh
-tenant:delete <domain>
-tenant:delete --all
+php artisan tenant:delete <domain>
+php artisan tenant:delete --all
 ```
 
 ### Nova Tools
