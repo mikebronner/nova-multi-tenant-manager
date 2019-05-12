@@ -26,11 +26,22 @@ Manage tenants and their settings in Laravel Nova.
 ### Planned Features
 - Configurable settings fields.
 - Automatic integration with `genealabs/laravel-governor`.
-- Extendible classes to allow custom integrate with 3rd-party packages.
+- Extendible classes to allow custom integration with 3rd-party packages.
 
 ## Usage
 ### CLI Commands
-// TBA
+#### `tenant:create`
+// coming soon
+
+#### `tenant:alias`
+// coming soon
+
+#### `tenant:delete`
+// coming soon
 
 ### Nova Tools
-// TBA
+#### Tenants Management
+// coming soon
+
+#### Tenant Settings
+// coming soon

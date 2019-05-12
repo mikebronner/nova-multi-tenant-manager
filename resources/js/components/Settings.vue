@@ -225,15 +225,12 @@ export default {
                         >
                             <i class="fas fa-plus"></i>
                         </button>
-
                         <div class="help-text help-text mt-2">
                         </div>
                     </div>
                 </div>
-
             </div>
         </card>
-
         <heading class="mb-6 mt-12">Settings</heading>
         <card class="mt-4">
             <div>
