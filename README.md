@@ -41,7 +41,7 @@ Manage tenants and their settings in Laravel Nova.
 
 ### Nova Tools
 #### Tenants Management
-// coming soon
+<img width="1267" alt="Screen Shot 2019-05-11 at 5 19 20 PM" src="https://user-images.githubusercontent.com/1791050/57576338-26298780-7412-11e9-8a16-44f465d20665.png">
 
 #### Tenant Settings
-// coming soon
+<img width="1269" alt="Screen Shot 2019-05-11 at 5 19 07 PM" src="https://user-images.githubusercontent.com/1791050/57576337-26298780-7412-11e9-8169-bd1bb38a9924.png">
