@@ -27,17 +27,28 @@ Manage tenants and their settings in Laravel Nova.
 - Configurable settings fields.
 - Automatic integration with `genealabs/laravel-governor`.
 - Extendible classes to allow custom integration with 3rd-party packages.
+- Integrate CLI commands into tenancy namespace.
 
 ## Usage
 ### CLI Commands
 #### `tenant:create`
-// coming soon
+Creates a tenant with the provided domain name.
+```sh
+php artisan tenant:create <name> <domain>
+```
 
 #### `tenant:alias`
-// coming soon
+Creates an alias for an existing tenant with the provided domain name.
+```sh
+php artisan tenant:alias <domain> <alias>
+```
 
 #### `tenant:delete`
-// coming soon
+Deletes tenant by the provided domain, or delete all tenants.
+```sh
+tenant:delete <domain>
+tenant:delete --all
+```
 
 ### Nova Tools
 #### Tenants Management
