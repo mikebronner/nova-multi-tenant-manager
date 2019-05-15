@@ -161,7 +161,7 @@ export default {
 
 <template>
     <div>
-        <heading class="mb-6">Site</heading>
+        <heading class="mb-6">Site Details</heading>
         <card>
             <div>
                 <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
