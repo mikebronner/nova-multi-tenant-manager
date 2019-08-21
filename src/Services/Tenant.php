@@ -26,12 +26,16 @@ class Tenant
         $domain = $this->cleanDomain($domain);
 
         if ($this->exists($domain)) {
+            if (! $this->website) {
+                $this->createWebsite($domain);
+            }
+
             $this->createTenant($domain, $name);
 
             throw new TenantExistsException("Tenant with domain '{$domain}' already exists.");
         }
 
-        $this->createWebsite();
+        $this->createWebsite($domain);
         $this->createHostname($domain);
         $this->switchToTenant();
         $this->createTenant($domain, $name);
@@ -122,10 +126,19 @@ class Tenant
         $tenant->save();
     }
 
-    protected function createWebsite()
+    protected function createWebsite(string $domain) : Website
     {
         $this->website = new Website;
-        app(WebsiteRepository::class)
+
+        if (config('tenancy.website.disable-random-id') === true) {
+            $this->website->uuid = str_slug($domain);
+
+            if (config('tenancy.website.uuid-limit-length-to-32')) {
+                $this->website->uuid = substr($this->website->uuid, -32);
+            }
+        }
+
+        return app(WebsiteRepository::class)
             ->create($this->website);
     }
 

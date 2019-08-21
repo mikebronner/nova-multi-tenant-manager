@@ -182,7 +182,7 @@ export default {
                         </div>
                     </div>
                 </div>
-                                <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
+                <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
                     <div class="w-1/5 py-6 px-8">
                         <label class="inline-block text-80 pt-2 leading-tight" for="name">
                             Domain
@@ -223,7 +223,16 @@ export default {
                             class="btn btn-default btn-primary rounded-l-none"
                             @click="addAlias"
                         >
-                            <i class="fas fa-plus"></i>
+                            <svg
+                                class="fill-current h-3 w-3"
+                                aria-hidden="true"
+                                focusable="false"
+                                role="img"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512"
+                            >
+                                <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path>
+                            </svg>
                         </button>
                         <div class="help-text help-text mt-2">
                         </div>
@@ -231,7 +240,7 @@ export default {
                 </div>
             </div>
         </card>
-        <heading class="mb-6 mt-12">Settings</heading>
+        <heading class="mb-4 mt-8">Settings</heading>
         <card class="mt-4">
             <div>
                 <div class="flex border-b border-40">
@@ -268,6 +277,44 @@ export default {
                         </div>
                     </div>
                 </div>
+
+                <!-- <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
+                    <div class="w-1/5 py-6 px-8">
+                        <label class="inline-block text-80 pt-2 leading-tight" for="name">
+                            Date Format
+                        </label>
+                    </div>
+                    <div class="py-6 px-8 w-1/2">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            class="w-full form-control form-input form-input-bordered"
+                            v-model="tenant.name"
+                            @keyup="updateTenant"
+                        >
+                        <div class="help-text help-text mt-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex border-b border-40" via-resource="" via-resource-id="" via-relationship="">
+                    <div class="w-1/5 py-6 px-8">
+                        <label class="inline-block text-80 pt-2 leading-tight" for="name">
+                            Time Format
+                        </label>
+                    </div>
+                    <div class="py-6 px-8 w-1/2">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            class="w-full form-control form-input form-input-bordered"
+                            v-model="tenant.name"
+                            @keyup="updateTenant"
+                        >
+                        <div class="help-text help-text mt-2">
+                        </div>
+                    </div>
+                </div> -->
+
             </div>
         </card>
     </div>
