@@ -13,8 +13,8 @@
         }
     ],
     "require": {
-        "hyn/multi-tenant": "5.4.*",
-        "laravel/framework": "5.8 - 6.0",
+        "hyn/multi-tenant": "5.5.*",
+        "laravel/framework": "6.*",
         "laravel/nova": "2.*"
     },
     "require-dev": {
