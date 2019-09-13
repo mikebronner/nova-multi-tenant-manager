@@ -8,6 +8,7 @@ use Hyn\Tenancy\Contracts\Repositories\WebsiteRepository;
 use Hyn\Tenancy\Environment;
 use Hyn\Tenancy\Models\Hostname;
 use Hyn\Tenancy\Models\Website;
+use Illuminate\Support\Str;
 
 class Tenant
 {
@@ -144,7 +145,7 @@ class Tenant
         $this->website = new Website;
 
         if (config('tenancy.website.disable-random-id') === true) {
-            $this->website->uuid = str_slug($domain);
+            $this->website->uuid = Str::slug($domain);
 
             if (config('tenancy.website.uuid-limit-length-to-32')) {
                 $this->website->uuid = substr($this->website->uuid, -32);
@@ -165,9 +166,14 @@ class Tenant
             ->attach($this->hostname, $this->website);
     }
 
-    protected function switchToTenant()
+    public function switchToTenant(TenantModel $tenant = null)
     {
-        app(Environment::class)->tenant($this->website);
+        if ($tenant) {
+            $tenant->load("website");
+            $website = $tenant->website;
+        }
+
+        app(Environment::class)->tenant($website ?? $this->website);
     }
 
     public function exists(string $domain) : bool
