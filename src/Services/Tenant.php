@@ -104,6 +104,19 @@ class Tenant
         return $this;
     }
 
+    public function findCurrent() : ?self
+    {
+        $website = app(Environment::class)->tenant();
+
+        if (! $website) {
+            return $this;
+        }
+
+        return $this
+            ->where("website_id", $website->id)
+            ->first();
+    }
+
     public function findCurrentHostname() : Hostname
     {
         return app(Environment::class)

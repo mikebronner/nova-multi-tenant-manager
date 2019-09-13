@@ -89,7 +89,7 @@ class TenantController extends Controller
         return $tenant;
     }
 
-    public function delete(int $id) : Response
+    public function destroy(int $id) : Response
     {
         $tenant = (new Tenant)->findOrFail($id);
         (new TenantService)
