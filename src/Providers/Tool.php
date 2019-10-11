@@ -5,6 +5,9 @@ use GeneaLabs\NovaMultiTenantManager\Console\Commands\CreateTenant;
 use GeneaLabs\NovaMultiTenantManager\Console\Commands\DeleteTenant;
 use GeneaLabs\NovaMultiTenantManager\Console\Commands\Publish;
 use GeneaLabs\NovaMultiTenantManager\Http\Middleware\Authorize;
+use GeneaLabs\NovaMultiTenantManager\Tenant;
+use Hyn\Tenancy\Environment;
+use Hyn\Tenancy\Models\Website;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +23,21 @@ class Tool extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../config/nova-multi-tenant-manager.php' => config_path('nova-multi-tenant-manager.php')
         ], 'config');
+
+        $this->app->singleton("tenant", function () {
+            $website = app(Environment::class)->tenant();
+
+            if (! $website) {
+                $websiteUuid = config('database.connections.tenant.uuid');
+                $website = (new Website)->where("uuid", $websiteUuid)->first();
+                $environment = app(Environment::class);
+                $environment->tenant($website);
+            }
+    
+            return (new Tenant)
+                ->where("website_id", $website->id)
+                ->first();
+        });
 
         $this->app->booted(function () {
             $this->routes();
