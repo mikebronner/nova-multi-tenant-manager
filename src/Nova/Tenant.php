@@ -30,11 +30,11 @@ class Tenant extends NovaResource
                 ->sortable(),
             Text::make("Name"),
             Text::make("Domain")
-                ->rules("required", "url"),
+                ->rules("required"),
         ];
 
         if ($settings = config("nova-multi-tenant-manager.settings-fields-class")) {
-            $fields[] = new Panel("Settings", (new $settings)->make());
+            $fields[] = (new $settings)->make();
         }
 
         return $fields;
