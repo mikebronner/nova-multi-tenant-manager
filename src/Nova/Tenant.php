@@ -34,7 +34,7 @@ class Tenant extends NovaResource
         ];
 
         if ($settings = config("nova-multi-tenant-manager.settings-fields-class")) {
-            $fields[] = (new $settings)->make();
+            $fields = array_merge($fields, (new $settings)->make());
         }
 
         return $fields;
