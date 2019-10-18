@@ -1,6 +1,8 @@
 # Nova Multi-Tenant Manager
 Manage tenants and their settings in Laravel Nova.
 
+![Multi-Tenant Manager for Laravel Nova masthead image.](https://repository-images.githubusercontent.com/186168087/0a8f8d80-f1b7-11e9-93ee-6399860d51f4)
+
 ## Requirements
 - PHP >= 7.1.3
 - Laravel 5.8.* (https://laravel.com)
