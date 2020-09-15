@@ -10,24 +10,28 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/tenancy/multi-tenant"
         }
     ],
     "require": {
-        "hyn/multi-tenant": "^5.6",
-        "illuminate/console": "^7.0",
-        "illuminate/database": "^7.0",
-        "illuminate/http": "^7.0",
-        "illuminate/routing": "^7.0",
-        "illuminate/support": "^7.0",
-        "laravel/nova": "^3.0"
+        "hyn/multi-tenant": "dev-patch-2@dev",
+        "illuminate/console": "^8.0",
+        "illuminate/database": "^8.0",
+        "illuminate/http": "^8.0",
+        "illuminate/routing": "^8.0",
+        "illuminate/support": "^8.0",
+        "laravel/nova": "^3.9"
     },
     "require-dev": {
-        "orchestra/testbench": "^5.0",
-        "orchestra/testbench-browser-kit": "^5.0",
-        "orchestra/testbench-dusk": "^5.0",
+        "orchestra/testbench": "^6.0",
+        "orchestra/testbench-browser-kit": "^6.0",
+        "orchestra/testbench-dusk": "^6.0",
         "php-coveralls/php-coveralls": "^2.2",
         "phpmd/phpmd": "^2.7",
-        "phpunit/phpunit": "^8.5",
+        "phpunit/phpunit": "^9.0",
         "sebastian/phpcpd": "^5.0",
         "squizlabs/php_codesniffer": "^3.4",
         "symfony/thanks": "^1.2"
