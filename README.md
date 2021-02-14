@@ -5,9 +5,9 @@ Manage tenants and their settings in Laravel Nova.
 
 ## Requirements
 - PHP >= 7.1.3
-- Laravel 5.8.* (https://laravel.com)
-- Laravel Nova 2.* (https://nova.laravel.com)
-- Laravel Tenancy 5.4.* (https://laravel-tenancy.com)
+- Laravel 8.* (https://laravel.com)
+- Laravel Nova 3.* (https://nova.laravel.com)
+- Laravel Tenancy 5.7.* (https://laravel-tenancy.com)
 
 ## Installation
 1. ```sh
