@@ -1,0 +1,25 @@
+version: 2
+registries:
+  git-nova-laravel-com:
+    type: git
+    url: https://nova.laravel.com
+    username: mike@genealabs.com
+    password: "${{secrets.GIT_NOVA_LARAVEL_COM_PASSWORD}}"
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: laravel-mix
+    versions:
+    - 5.0.9
+    - 6.0.11
+    - 6.0.13
+    - 6.0.16
+    - 6.0.17
+  registries:
+  - git-nova-laravel-com
